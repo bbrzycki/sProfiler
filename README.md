@@ -1,9 +1,9 @@
-# ctimer
+# sprofiler
 Code profiler/timer supporting code checkpoints and reporting.
 
 ## Installation
 ```
-pip install ctimer
+pip install sprofiler
 ```
 
 ## Usage
@@ -11,23 +11,23 @@ Use the `Timer` to create named checkpoints throughout your code. Checkpoints ne
 multiple iterations are combined to summarize how long it takes to complete each leg. The `report()` function
 prints the results from all checkpoints.
 ```
-import ctimer
+import sprofiler as sp
 from time import sleep
 
-ct = ctimer.Timer()
+pr = sp.Profiler()
 
-ct.start('program')
+pr.start('program')
 print('Code outside loop')
 sleep(1)
     
 for _ in range(10):
-    ct.start('loop')
+    pr.start('loop')
     print('Code in loop')
     sleep(1)
-    ct.stop('loop')
-ct.stop('program')
+    pr.stop('loop')
+pr.stop('program')
     
-ct.report()
+pr.report()
 ```
 
 The printed report appears as:
@@ -39,4 +39,5 @@ loop | 1.0 s ± 0.0 s per iteration, n = 10
 ## Future Directions
 
 * Automatic logging, so that `report()` isn't strictly needed
+* Function decorators
 * Potential support for more complex profiling

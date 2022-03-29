@@ -3,7 +3,7 @@ import time
 from . import checkpoint
         
 
-class Timer(object):
+class Profiler(object):
     def __init__(self):
         self.profile_start = time.time()
         self.checkpoints = {}

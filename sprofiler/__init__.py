@@ -1,3 +1,3 @@
 from __future__ import absolute_import, division, print_function
 
-from .ctimer import Timer
+from .sprofiler import Profiler
