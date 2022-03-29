@@ -4,17 +4,16 @@ with open('README.md', 'r') as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name='lprofiler',
+    name='ctimer',
     version='0.0.1',
     author='Bryan Brzycki',
     author_email='bbrzycki@berkeley.edu',
     description='Lightweight profiler with checkpoints',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/bbrzycki/lprofiler',
+    url='https://github.com/bbrzycki/ctimer',
     project_urls={
-#         'Documentation': 'https://setigen.readthedocs.io/en/latest/',
-        'Source': 'https://github.com/bbrzycki/lprofiler'
+        'Source': 'https://github.com/bbrzycki/ctimer'
     },
     packages=setuptools.find_packages(),
 #     include_package_data=True,

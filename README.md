@@ -1,2 +1,2 @@
-# lprofiler
-Lightweight profiler supporting code checkpoints and reporting
+# ctimer
+Code profiler/timer supporting code checkpoints and reporting
