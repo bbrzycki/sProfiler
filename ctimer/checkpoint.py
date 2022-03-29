@@ -30,7 +30,7 @@ class Checkpoint(object):
         self.stops.append(stop)
         self.elapsed.append(stop - start)
     
-    def summarize(self, dec=1):
+    def report(self, dec=1):
         n_iter = len(self.elapsed)
         mean = np.mean(self.elapsed)
         std = np.std(self.elapsed)

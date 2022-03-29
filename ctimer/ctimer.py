@@ -52,4 +52,4 @@ class Timer(object):
     def report(self, dec=1):
         for name in self.checkpoints:
             ckpt = self.checkpoints[name]
-            print(ckpt.summarize(dec=dec))
+            print(ckpt.report(dec=dec))
