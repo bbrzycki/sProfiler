@@ -1,4 +1,6 @@
-# sProfiler
+# sProfiler 
+[![PyPI version](https://badge.fury.io/py/sprofiler.svg)](https://badge.fury.io/py/sprofiler) 
+
 Python script profiler/timer supporting code checkpoints and reporting.
 
 ## Installation
