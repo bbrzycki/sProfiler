@@ -1,5 +1,5 @@
-# sprofiler
-Code profiler/timer supporting code checkpoints and reporting.
+# sProfiler
+Python script profiler/timer supporting code checkpoints and reporting.
 
 ## Installation
 ```
