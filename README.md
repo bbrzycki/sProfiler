@@ -9,7 +9,7 @@ pip install sprofiler
 ```
 
 ## Usage
-Use the `Timer` to create named checkpoints throughout your code. Checkpoints need a 'start' and a 'stop', and 
+Use the `Profiler` to create named checkpoints throughout your code. Checkpoints need a 'start' and a 'stop', and 
 multiple iterations are combined to summarize how long it takes to complete each leg. The `report()` function
 prints the results from all checkpoints.
 ```
