@@ -11,7 +11,7 @@ pip install sprofiler
 ## Usage
 Use the `Profiler` to create named checkpoints throughout your code. Checkpoints need a 'start' and a 'stop', and 
 multiple iterations are combined to summarize how long it takes to complete each leg. The `report()` function
-prints the results from all checkpoints.
+prints the results from all checkpoints. If `Profiler.stop` is not supplied a checkpoint name, the profiler will close and calculate elapsed time from the last open checkpoint (i.e. last in, first out).
 ```
 import sprofiler as sp
 from time import sleep
