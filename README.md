@@ -19,12 +19,9 @@ from time import sleep
 pr = sp.Profiler()
 
 pr.start('program')
-print('Code outside loop')
 sleep(1)
-    
 for _ in range(10):
     pr.start('sleep_1s')
-    print('Code in loop')
     sleep(1)
     pr.stop('sleep_1s')
 pr.stop('program')
@@ -55,7 +52,6 @@ pr = sp.Profiler()
 
 @pr.time_func
 def sleep_1s():
-    print('Code in loop')
     sleep(1)
     
 @pr.time_func
