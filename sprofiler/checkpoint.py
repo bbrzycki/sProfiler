@@ -1,15 +1,25 @@
 import numpy as np
 
 
-def format_elapsed(m, s, dec=1):
+def format_reported_times(m, s=None, dec=1):
+    format_str = ''
     if m >= 1.:
-        return f'{m:.{dec}f} s \u00B1 {s:.{dec}f} s'
+        format_str += f'{m:.{dec}f} s' 
+        if s is not None:
+            format_str += f' \u00B1 {s:.{dec}f} s'
     elif m >= 1e-3:
-        return f'{1e3 * m:.{dec}f} ms \u00B1 {1e3 * s:.{dec}f} ms'
+        format_str += f'{1e3 * m:.{dec}f} ms' 
+        if s is not None:
+            format_str += f' \u00B1 {1e3 * s:.{dec}f} ms'
     elif m >= 1e-6:
-        return f'{1e6 * m:.{dec}f} us \u00B1 {1e6 * s:.{dec}f} us'
+        format_str += f'{1e6 * m:.{dec}f} us' 
+        if s is not None:
+            format_str += f' \u00B1 {1e6 * s:.{dec}f} us'
     else:
-        return f'{1e9 * m:.{dec}f} ns \u00B1 {1e9 * s:.{dec}f} ns'
+        format_str += f'{1e9 * m:.{dec}f} ns' 
+        if s is not None:
+            format_str += f' \u00B1 {1e9 * s:.{dec}f} ns'
+    return format_str
 
 
 class Checkpoint(object):
@@ -31,16 +41,18 @@ class Checkpoint(object):
         self.elapsed.append(stop - start)
     
     def report(self, dec=1):
-        n_iter = len(self.elapsed)
-        mean = np.mean(self.elapsed)
-        std = np.std(self.elapsed)
-        
+        """
+        Return formatted statistics.
+        """
+        elapsed_stats = format_reported_times(np.mean(self.elapsed), 
+                                              np.std(self.elapsed), 
+                                              dec=dec)
         return (
             f'{self.name} | '
-            f'{format_elapsed(mean, std, dec=dec)} per iteration, '
-            f'n = {n_iter}'
+            f'{elapsed_stats} per iteration, '
+            f'n = {len(self.elapsed)}'
         )
         
     def __str__(self):
-        return self.summarize(dec=1)
+        return self.report(dec=1)
     

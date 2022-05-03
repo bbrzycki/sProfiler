@@ -21,10 +21,10 @@ print('Code outside loop')
 sleep(1)
     
 for _ in range(10):
-    pr.start('loop')
+    pr.start('sleep_1s')
     print('Code in loop')
     sleep(1)
-    pr.stop('loop')
+    pr.stop('sleep_1s')
 pr.stop('program')
     
 pr.report()
@@ -33,11 +33,43 @@ pr.report()
 The printed report appears as:
 ```
 program | 11.0 s ± 0.0 s per iteration, n = 1
-loop | 1.0 s ± 0.0 s per iteration, n = 10
+sleep_1s | 1.0 s ± 0.0 s per iteration, n = 10
+```
+
+## Logging
+
+sProfiler automatically logs results by default. You can change the destination filename, as well as the level of verbosity: 0 - no logging, 1 - only elapsed times, 2 - start and stop times. Defaults are `logname='profiler.log'` and `verbose=2`.
+```
+import sprofiler as sp
+from time import sleep
+
+pr = sp.Profiler(logname='my_log.log', verbose=1)
+```
+
+## Function Decorators
+sProfiler also supports timing functions with decorators, via `Profiler.time_func`. Demonstrating on the first example:
+```
+pr = sp.Profiler()
+
+@pr.time_func
+def sleep_1s():
+    print('Code in loop')
+    sleep(1)
+    
+@pr.time_func
+def my_func():
+    for _ in range(10):
+        sleep_1s()
+        
+pr.report()
+```
+
+The printed report appears as:
+```
+my_func | 10.0 s ± 0.0 s per iteration, n = 1
+sleep_1s | 1.0 s ± 0.0 s per iteration, n = 10
 ```
 
 ## Future Directions
 
-* Automatic logging, so that `report()` isn't strictly needed
-* Function decorators
 * Potential support for more complex profiling
